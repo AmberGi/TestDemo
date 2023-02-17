@@ -3,6 +3,8 @@ package lt.gintare.demo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import javax.imageio.plugins.tiff.TIFFImageReadParam;
+import java.sql.SQLOutput;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -55,4 +57,21 @@ public class TestClasWork {
 
         Assert.assertEquals(actualResult, expectedResult);
     }
+
+    // testas zalias kai palaukia 5 sekundes
+
+    @Test
+
+    public void waitFor5Sec() {
+        try {
+            System.out.println("Start");
+            Thread.sleep(5000);
+            System.out.println("End");
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            Thread.currentThread().interrupt();
+        }
+
+    }
 }
+
