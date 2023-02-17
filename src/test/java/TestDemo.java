@@ -90,4 +90,20 @@ public class TestDemo {
 
     }
 
+    @Test
+    public void testPositiveMethodGreetingsInputGintare() {
+        // testuosim metoda greetings()
+        String inputName = "Gintare";
+        String expectedName = "Gintare";
+        String actualResult;
+
+        actualResult = Arithmetic.greetings(inputName); // grazins teksta, svarbu kad butu musu vardas
+
+        // palyginimas
+        Assert.assertTrue(
+                actualResult.contains(expectedName),
+                String.format("Actual: %s; Expected: %s", actualResult, expectedName)
+        );
+    }
 }
+
