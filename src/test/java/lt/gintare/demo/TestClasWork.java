@@ -3,6 +3,9 @@ package lt.gintare.demo;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class TestClasWork {
@@ -37,8 +40,19 @@ public class TestClasWork {
         actualResult = inputNumber % 3;
 
         Assert.assertEquals(actualResult, expectedResult);
-
     }
 
+    // ar siandien treciadienis
+    @Test
+    public void testIfTodayIsWednesday() {
 
+        DayOfWeek expectedResult = DayOfWeek.FRIDAY;
+        DayOfWeek actualResult;
+
+        actualResult = LocalDateTime.now().getDayOfWeek();
+
+        System.out.println(LocalDateTime.now().getDayOfWeek());
+
+        Assert.assertEquals(actualResult, expectedResult);
+    }
 }
