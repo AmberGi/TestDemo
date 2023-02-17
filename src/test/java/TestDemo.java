@@ -27,8 +27,22 @@ public class TestDemo {
     }
 
     //spaudziam @Test
+
     @Test
-    public void test02() {
+    public void testWithNegativeDataIf48DividesWith5AndReturnReminder3() {
+        // kai daliname is 5, negatyvus scenarijus
+
+        int input = 48;
+        int actualResult;
+        int expectedResult = 3; // nes 48 % 5 liekana yra 3
+
+        // 2.Testo veiksmai:
+
+        actualResult = input % 5;
+
+        // 3. Palyginimas:
+
+        Assert.assertEquals(actualResult, expectedResult);
 
     }
 }
