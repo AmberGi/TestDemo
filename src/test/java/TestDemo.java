@@ -1,3 +1,4 @@
+import lt.gintare.demo.Arithmetic;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -65,4 +66,28 @@ public class TestDemo {
         );
 
     }
+
+    @Test
+    public void testPositiveMethodSumWith10And3() {
+
+        // Testuojam klase Arithmetic, metodas sum()
+
+        // 1. Duomenys
+
+        int pirmasSkaicius = 10;
+        int antrasSkaicius = 3;
+        int expectedResult = 13;
+        int actualResult;
+
+        // 2. Veiksmai
+
+        actualResult = Arithmetic.sum(pirmasSkaicius, antrasSkaicius);
+
+        // 3. Rezultatu palyginimas
+
+        Assert.assertEquals(actualResult, expectedResult);
+
+
+    }
+
 }
