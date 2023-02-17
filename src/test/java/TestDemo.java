@@ -1,4 +1,5 @@
 import lt.gintare.demo.Arithmetic;
+import lt.gintare.demo.TestClasWork;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -107,7 +108,15 @@ public class TestDemo {
     }
 
     @Test
-    public void testAr4YraLyginis(){
+    public void testIfNumber4IsEven() {
+        int expectedResult = 0;
+        int actualResult;
+        int inputNumber = 4;
+
+        actualResult = inputNumber % 2;
+
+        Assert.assertEquals(actualResult, expectedResult);
+
 
 
 
