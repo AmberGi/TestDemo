@@ -3,6 +3,8 @@ import lt.gintare.demo.TestClasWork;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.time.LocalTime;
+
 public class TestDemo {
 
     @Test
@@ -116,8 +118,18 @@ public class TestDemo {
         actualResult = inputNumber % 2;
 
         Assert.assertEquals(actualResult, expectedResult);
+    }
 
 
+    @Test
+    public void testTimeNowIfNowIs19Hours() {
+
+        int timeNow = LocalTime.now().getHour();
+
+        int expectedResult = 19;
+        int actualResult = timeNow;
+
+        Assert.assertEquals(actualResult, expectedResult);
 
 
     }
