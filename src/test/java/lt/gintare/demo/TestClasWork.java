@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import javax.imageio.plugins.tiff.TIFFImageReadParam;
+import java.lang.annotation.Repeatable;
 import java.sql.SQLOutput;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -72,6 +73,23 @@ public class TestClasWork {
             Thread.currentThread().interrupt();
         }
 
+    }
+
+    // Testas “žalias” jei nuo 1 iki 10 yra 5 lyginiai skaičiai
+    @Test
+
+    public void testBetween1And10Is5EvenNumbers() {
+
+        int expectedResult = 5;
+        int actualResult = 0;
+
+        for (int i = 1; i <= 10; i++)
+        {
+            if (i % 2 == 0) {
+                actualResult++;
+            }
+        }
+        Assert.assertEquals(actualResult, expectedResult);
     }
 }
 
