@@ -45,4 +45,24 @@ public class TestDemo {
         Assert.assertEquals(actualResult, expectedResult);
 
     }
+
+    @Test
+    public void testPositiveIf5Divide5HasReminder0() {
+
+        int input = 5;
+        int actualResult;
+        int expectedResult = 0;
+
+        // 2.Testo veiksmai:
+
+        actualResult = input % 5;
+
+        // 3. Palyginimas:
+
+        Assert.assertTrue(
+                actualResult == expectedResult,
+                String.format("Actual: %s; Expected: %s.", actualResult, expectedResult)
+        );
+
+    }
 }
