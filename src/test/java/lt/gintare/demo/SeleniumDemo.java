@@ -8,12 +8,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import javax.accessibility.AccessibleStateSet;
 import java.time.Duration;
 
 public class SeleniumDemo {
+
+
 
     @Test
     public void demo01() {
@@ -99,6 +102,42 @@ public class SeleniumDemo {
 
         Assert.assertEquals(actualResult, expectedResult);
         // driver.close();
+
+    }
+
+    @Test
+
+    public void testTwoInputFieldsValueA_8ValueB_10InSeleniumEasy() {
+
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        chromeOptions.addArguments("--start-maximized ");
+
+        WebDriver driver = new ChromeDriver(chromeOptions);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get("https://demo.seleniumeasy.com/basic-first-form-demo.html");
+
+        String valueA = "8";
+        String valueB = "10";
+        String expectedResult = "18";
+        String actualResult;
+
+        WebElement inputEnterA = driver.findElement(By.xpath("//*[@id='sum1']"));
+        inputEnterA.sendKeys(valueA);
+
+        WebElement inputEnterB = driver.findElement(By.xpath("//*[@id='sum2']"));
+        inputEnterB.sendKeys(valueB);
+
+        WebElement buttonGetTotal = driver.findElement(By.xpath("//*[@id='gettotal']/button"));
+        buttonGetTotal.click();
+
+        WebElement spanDisplayValue = driver.findElement(By.xpath("//*[@id='displayvalue']"));
+        actualResult = spanDisplayValue.getText();
+
+        driver.quit();
+
+        Assert.assertEquals(actualResult, expectedResult);
 
     }
 }
