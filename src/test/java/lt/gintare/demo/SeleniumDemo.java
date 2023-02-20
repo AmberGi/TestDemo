@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -16,7 +17,22 @@ import java.time.Duration;
 
 public class SeleniumDemo {
 
+    WebDriver driver;
 
+    @BeforeTest
+
+    public void setUpDriver(){
+
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
+        chromeOptions.addArguments("--start-maximized ");
+
+        driver = new ChromeDriver(chromeOptions);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        driver.get("https://demo.seleniumeasy.com/basic-first-form-demo.html");
+    }
 
     @Test
     public void demo01() {
@@ -31,7 +47,6 @@ public class SeleniumDemo {
             Thread.currentThread().interrupt();
         }
         driver.quit();
-
     }
 
     @Test
@@ -61,18 +76,7 @@ public class SeleniumDemo {
     }
 
     @Test
-
     public void testSingleInputField_InputMessageGintareInSeleniumEasy() {
-
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        chromeOptions.addArguments("--start-maximized ");
-
-        WebDriver driver = new ChromeDriver(chromeOptions);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        driver.get("https://demo.seleniumeasy.com/basic-first-form-demo.html");
 
         String message = "Gintarė";
         String expectedResult = "Gintarė";
@@ -98,25 +102,11 @@ public class SeleniumDemo {
         WebElement spanDisplayMessage = driver.findElement(By.xpath("//span[@id='display']"));
         actualResult = spanDisplayMessage.getText();
 
-        driver.quit();
-
         Assert.assertEquals(actualResult, expectedResult);
-        // driver.close();
-
     }
 
     @Test
-
     public void testTwoInputFieldsValueA_8ValueB_10InSeleniumEasy() {
-
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.setPageLoadStrategy(PageLoadStrategy.NORMAL);
-        chromeOptions.addArguments("--start-maximized ");
-
-        WebDriver driver = new ChromeDriver(chromeOptions);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://demo.seleniumeasy.com/basic-first-form-demo.html");
 
         String valueA = "8";
         String valueB = "10";
@@ -135,9 +125,11 @@ public class SeleniumDemo {
         WebElement spanDisplayValue = driver.findElement(By.xpath("//*[@id='displayvalue']"));
         actualResult = spanDisplayValue.getText();
 
-        driver.quit();
-
         Assert.assertEquals(actualResult, expectedResult);
+    }
 
+    @AfterTest
+    public void closeDriver(){
+        driver.close();
     }
 }
